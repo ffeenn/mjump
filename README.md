@@ -6,6 +6,7 @@
 \/    \/_/ | \__,_||_| |_| |_|| .__/ 
        |__/                   |_|    
 ```
+> 用于小型企业或者个人服务器集中管理，集中管理服务器密码，实现一个账号登录多个服务器。类似于堡垒机，可二次开发自己所需功能.
 [![GoDoc](https://godoc.org/github.com/gliderlabs/ssh?status.svg)](https://godoc.org/github.com/gliderlabs/ssh) 
 [![CircleCI](https://img.shields.io/circleci/project/github/gliderlabs/ssh.svg)](https://circleci.com/gh/gliderlabs/ssh)
 [![Go Report Card](https://goreportcard.com/badge/github.com/gliderlabs/ssh)](https://goreportcard.com/report/github.com/gliderlabs/ssh) 
