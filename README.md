@@ -15,6 +15,7 @@
 [![Email Updates](https://img.shields.io/badge/updates-subscribe-yellow.svg)](https://app.convertkit.com/landing_pages/243312)
 ## Usage
 ```
+// 修改配置文件无需重启服务.
 edit config.json
 {
     "users": [
