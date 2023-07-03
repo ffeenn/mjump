@@ -33,17 +33,19 @@ edit config.json
     }
 }
 
-go mjump
+./mjump
 ```
 Docker Run
 ```
 docker pull ffeenn/mjump
-docker run -itd -p 2222:2222 -v .config.json:/config.json ffeenn/mjump
+docker run -itd -p 2222:2222 -v ./config.json:/config.json ffeenn/mjump
 ```
 ## Make
 ```
 yum -y install git go
 git clone https://github.com/ffeenn/mjump.git
 cd mjump
-go build cmd/mjmp.go 
+go env -w GOPROXY=https://proxy.golang.com.cn,direct
+go env -w CGO_ENABLED=0
+GOOS=linux GOARCH=amd64 go build cmd/mjump.go
 ```
