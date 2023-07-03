@@ -72,7 +72,6 @@ func (s *Server) SSHconn() {
 	}()
 	defer sshConn.Close()
 	logger.Infof("Conn[%s] create session %s success", s.UserConn.ID(), s.ID)
-	// utils.IgnoreErrWriteWindowTitle(s.UserConn, s.connOpts.TerminalTitle())
 	if err = sw.Bridge(s.UserConn, sshConn); err != nil {
 		logger.Error(err)
 	}

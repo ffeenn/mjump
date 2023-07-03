@@ -410,7 +410,6 @@ func GetSftpCon(s sftpHandler, H config.Host, fpath string) (fconn *fCon, rpath 
 			logger.Errorf("Create Sftp Client err: %s", err.Error())
 			return nil, "", err
 		}
-		// logger.Debug(enddir, fconn, s.uConn.fc)
 		s.uConn.fc[H.Name] = fconn
 	}
 	switch strings.ToLower(H.Ftpdir) {

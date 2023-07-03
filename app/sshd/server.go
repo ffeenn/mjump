@@ -117,7 +117,6 @@ func PasswordAuth(ctx ssh.Context, password string) bool {
 
 func SessionHandler(sess ssh.Session) {
 	if pty, winChan, isPty := sess.Pty(); isPty {
-		// if pty, winChan, isPty := sess.Pty(); isPty {
 		logger.Infof("User %s request pty %s", sess.User(), pty.Term)
 		inth := InitactiveH(sess)
 		go inth.WatcheChangeWin(winChan)

@@ -1,6 +1,6 @@
 {
     "users": [
-        { "id":"1","user":"hh", "password": "123456","assets": [ "1","2","3" ]}
+        { "id":"1","username":"admin", "password": "123456","public":"","assets":[ "1","2","3","5" ]}
     ],
     "hosts": [
         { "id":1,"username":"root","ip":"192.168.1.101","password":"123456", "protocols":"22","isactive":"0" ,"ftpdir":"/","privateKey":""},

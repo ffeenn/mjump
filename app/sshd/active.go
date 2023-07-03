@@ -69,29 +69,12 @@ func (d *DispPanel) Home() {
 		logger.Errorf("Send to client error, %s", err)
 		return
 	}
-	// io.WriteString(d.wsession.Sess, "\t\t__  __ _\r\n")
-	// io.WriteString(d.wsession.Sess, "\t\t|  \\/  (_)\r\n")
-	// io.WriteString(d.wsession.Sess, "\t\t| \\  / |_ _   _ _ __ ___  _ __\r\n")
-	// io.WriteString(d.wsession.Sess, "\t\t| |\\/| | | | | | '_ ` _ \\| '_ \\\r\n")
-	// io.WriteString(d.wsession.Sess, "\t\t| |  | | | |_| | | | | | | |_) |\r\n")
-	// io.WriteString(d.wsession.Sess, "\t\t|_|  |_| |\\__,_|_| |_| |_| .__/\r\n")
-	// io.WriteString(d.wsession.Sess, "\t\t      _/ |               | |\r\n")
-	// io.WriteString(d.wsession.Sess, "\t\t     |__/                |_|\r\n")
-
-	//echo "          _                          ";
-	//echo "  /\/\   (_) _   _  _ __ ___   _ __  ";
-	//echo " /    \  | || | | || '_ \` _ \ | '_ \ ";
-	//echo "/ /\/\ \ | || |_| || | | | | || |_) |";
-	//echo "\/    \/_/ | \__,_||_| |_| |_|| .__/ ";
-	//echo "       |__/                   |_|    ";
-
 	io.WriteString(d.wsession.Sess, "\t\t          _                          \r\n")
 	io.WriteString(d.wsession.Sess, "\t\t  /\\/\\   (_) _   _  _ __ ___   _ __  \r\n")
-	io.WriteString(d.wsession.Sess, "\t\t /    \\  | || | | || '_ \\` _ \\ | '_ \\ \r\n")
+	io.WriteString(d.wsession.Sess, "\t\t /    \\  | || | | || '_ \\` _ \\| '_ \\ \r\n")
 	io.WriteString(d.wsession.Sess, "\t\t/ /\\/\\ \\ | || |_| || | | | | || |_) |\r\n")
 	io.WriteString(d.wsession.Sess, "\t\t\\/    \\/_/ | \\__,_||_| |_| |_|| .__/ \r\n")
 	io.WriteString(d.wsession.Sess, "\t\t       |__/                   |_|    \r\n\r\n")
-
 	io.WriteString(d.wsession.Sess, "\t\t输入 \033[1;36m回车\033[0m  显示可连接的主机列表\r\n")
 	io.WriteString(d.wsession.Sess, "\t\t输入 \033[1;36mh\033[0m     进入首页\r\n")
 	io.WriteString(d.wsession.Sess, "\t\t输入 \033[1;36mn\033[0m     下一页\r\n")
@@ -247,19 +230,19 @@ func (d *DispPanel) Displayterm() {
 	}
 }
 
-func (h *DispPanel) WatcheChangeWin(winChan <-chan ssh.Window) {
-	defer logger.Infof("Request %s: Windows change watch close", h.wsession.Uuid)
+func (d *DispPanel) WatcheChangeWin(winChan <-chan ssh.Window) {
+	defer logger.Infof("Request %s: Windows change watch close", d.wsession.Uuid)
 	for {
 		select {
-		case <-h.wsession.Sess.Context().Done():
+		case <-d.wsession.Sess.Context().Done():
 			return
 		case win, ok := <-winChan:
 			if !ok {
 				return
 			}
-			h.wsession.SetWin(win)
+			d.wsession.SetWin(win)
 			logger.Debugf("Term window size change: %d*%d", win.Height, win.Width)
-			_ = h.term.SetSize(win.Width, win.Height)
+			_ = d.term.SetSize(win.Width, win.Height)
 		}
 	}
 }
