@@ -53,6 +53,7 @@ GOOS=linux GOARCH=amd64 go build cmd/mjump.go
 ![image](https://github.com/ffeenn/mjump/assets/43292253/d7b36f5f-d4e7-4237-82dd-ca92920c6c99)
 
 ![image](https://github.com/ffeenn/mjump/assets/43292253/daad93e6-1503-41b3-a9e9-b0869582e4f0)
+![image](https://github.com/ffeenn/mjump/assets/43292253/16659027-f590-474f-8827-fd444ddbcfdb)
 
 
 
