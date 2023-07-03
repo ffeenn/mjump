@@ -100,9 +100,6 @@ func (s *sftpHandler) Filelist(r *sftp.Request) (sftp.ListerAt, error) {
 	case "List":
 		if r.Filepath == "/" {
 			Files := make(listerat, 0, len(s.Hosts))
-			// for i := 0; i < len(s.conf.Hosts); i++ {
-			// 	Files = append(Files, &loFileInfo{dirName: s.conf.Hosts[i].Name})
-			// }
 			for _, v := range s.Hosts {
 				Files = append(Files, &loFileInfo{dirName: v.Name})
 			}

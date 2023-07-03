@@ -59,7 +59,6 @@ type DispPanel struct {
 	hosts    []config.Host
 	page     int
 	pagemax  int
-	// selectHandler *UserSelectHandler
 }
 
 func (d *DispPanel) Home() {
@@ -85,8 +84,6 @@ func (d *DispPanel) Home() {
 }
 
 func (d *DispPanel) HostsPage(nex string) {
-	// io.WriteString(d.wsession.Sess, "\x1b[H\x1b[2J")
-	// io.WriteString(d.wsession.Sess, "\x1b[2J")
 	io.WriteString(d.wsession.Sess, "\x1b[3J\x1b[H\x1b[2J")
 	d.term.SetPrompt("IP/ID> ")
 	w, h := d.term.GetSize()
@@ -173,7 +170,6 @@ func (d *DispPanel) SelectHost(line string) {
 func (d *DispPanel) Displayterm() {
 	d.Home()
 	defer logger.Infof("Request %s: User %s stop interactive", d.wsession.ID(), "root")
-	// var Inception bool
 	for {
 		line, err := d.term.ReadLine()
 		if err != nil {

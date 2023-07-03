@@ -50,10 +50,6 @@ func NewSSHServer(config config.Config) *Server {
 		PasswordHandler: PasswordAuth,
 		// 公钥认证处理程序
 		PublicKeyHandler: PublicKeyAuth,
-		// 下一个验证方法处理程序为2步验证
-		// NextAuthMethodsHandler: func(ctx ssh.Context) []string {
-		// 	return []string{"keyboard-interactive"}
-		// },
 		// HostSigners: []ssh.Signer{handler.GetSSHSigner()}, // 主机密钥的私钥，必须至少有一个
 		Handler: SessionHandler,
 		SubsystemHandlers: map[string]ssh.SubsystemHandler{
@@ -106,7 +102,6 @@ func GetUser(us string) (u config.User, err error) {
 }
 func PasswordAuth(ctx ssh.Context, password string) bool {
 	// logger.Debug("PasswordAuth", ctx.SessionID())
-	// ctx.SetValue(ctxID, ctx.SessionID())
 	if u, err := GetUser(ctx.User()); err == nil {
 		if password == u.Password {
 			return true

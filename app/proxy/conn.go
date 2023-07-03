@@ -20,7 +20,6 @@ type ServerConnection interface {
 }
 type SSHClient struct {
 	*gossh.Client
-	// Cfg         *SSHClientOptions
 	ProxyClient *SSHClient
 
 	sync.Mutex
@@ -93,7 +92,6 @@ func SSHConn(sess *gossh.Session) (*SSHConnection, error) {
 		session: sess,
 		stdin:   stdin,
 		stdout:  stdout,
-		// options: options,
 	}
 	err = sess.Shell()
 	if err != nil {
@@ -108,7 +106,6 @@ type SSHConnection struct {
 	session *gossh.Session
 	stdin   io.Writer
 	stdout  io.Reader
-	// options *SSHOptions
 }
 
 func (sc *SSHConnection) SetWinSize(w, h int) error {
